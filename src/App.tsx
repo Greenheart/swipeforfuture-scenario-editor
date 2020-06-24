@@ -1,12 +1,10 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
+import ScenarioEditor from './components/ScenarioEditor'
 
 function App() {
     return (
         <div className="App">
-            <Button variant="contained" color="secondary">
-                Hello MD UI
-            </Button>
+            <ScenarioEditor />
         </div>
     )
 }
