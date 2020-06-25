@@ -8,7 +8,7 @@ import {
     Toolbar,
     useTheme,
 } from '@material-ui/core'
-import { Tune, GetApp, OpenInBrowser } from '@material-ui/icons'
+import { Tune, GetApp, OpenInBrowser, PlayArrow } from '@material-ui/icons'
 
 const Header = () => {
     const theme = useTheme()
@@ -30,6 +30,12 @@ const Header = () => {
                 </Typography>
 
                 <Grid>
+                    <Tooltip title="Play scenario" arrow>
+                        <IconButton aria-label="Play scenario">
+                            <PlayArrow fontSize="large" />
+                        </IconButton>
+                    </Tooltip>
+
                     <Tooltip title="Open scenario" arrow>
                         <IconButton aria-label="Open scenario">
                             <OpenInBrowser fontSize="large" />
