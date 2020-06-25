@@ -6,12 +6,15 @@ import {
     Tooltip,
     AppBar,
     Toolbar,
+    useTheme,
 } from '@material-ui/core'
 import { Tune, GetApp, OpenInBrowser } from '@material-ui/icons'
 
 const Header = () => {
+    const theme = useTheme()
+
     return (
-        <AppBar position="static" style={{ backgroundColor: 'lightgreen' }}>
+        <AppBar position="sticky">
             <Toolbar>
                 <Tooltip title="Change filters" arrow>
                     <IconButton aria-label="Change filters" edge="start">
@@ -22,7 +25,7 @@ const Header = () => {
                 <Typography
                     variant="h5"
                     component="h1"
-                    style={{ flex: 'auto', textAlign: 'center' }}>
+                    style={{ flex: 'auto', marginLeft: theme.spacing(1) }}>
                     Swipe for Future Scenario Editor
                 </Typography>
 

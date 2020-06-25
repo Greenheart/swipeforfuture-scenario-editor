@@ -7,7 +7,7 @@ const ScenarioEditor = () => {
     return (
         <>
             <Header />
-            <Container maxWidth="xl" style={{ backgroundColor: 'skyblue' }}>
+            <Container maxWidth="xl">
                 <p>Body</p>
             </Container>
         </>
