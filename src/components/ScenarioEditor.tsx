@@ -5,9 +5,12 @@ import Header from './Header'
 
 const ScenarioEditor = () => {
     return (
-        <Container maxWidth="xl" style={{ backgroundColor: 'skyblue' }}>
+        <>
             <Header />
-        </Container>
+            <Container maxWidth="xl" style={{ backgroundColor: 'skyblue' }}>
+                <p>Body</p>
+            </Container>
+        </>
     )
 }
 
