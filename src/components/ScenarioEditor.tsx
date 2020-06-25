@@ -3,13 +3,14 @@ import { Container } from '@material-ui/core'
 
 import Header from './Header'
 import Footer from './Footer'
+import CreateButton from './CreateButton'
 
 const ScenarioEditor = () => {
     return (
         <>
             <Header />
             <Container maxWidth="xl">
-                <p>Body</p>
+                <CreateButton />
                 <Footer />
             </Container>
         </>
