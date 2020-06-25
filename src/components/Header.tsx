@@ -43,7 +43,7 @@ const Header = () => {
                     </Tooltip>
 
                     <Tooltip title="Download scenario" arrow>
-                        <IconButton aria-label="Download scenario">
+                        <IconButton aria-label="Download scenario" edge="end">
                             <GetApp fontSize="large" />
                         </IconButton>
                     </Tooltip>
