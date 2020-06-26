@@ -7,19 +7,30 @@ import {
     AppBar,
     Toolbar,
     useTheme,
+    Theme,
 } from '@material-ui/core'
 import { Tune, GetApp, OpenInBrowser, PlayArrow } from '@material-ui/icons'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
 
 import { EditorContext } from '../contexts/EditorContext'
 
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        appBar: {
+            zIndex: theme.zIndex.drawer + 1,
+        },
+    })
+)
+
 const Header = () => {
     const theme = useTheme()
+    const classes = useStyles()
     const editorContext = useContext(EditorContext)
 
     const filterVerb = editorContext.state.isFiltersOpen ? 'Hide' : 'Show'
 
     return (
-        <AppBar position="sticky">
+        <AppBar position="sticky" className={classes.appBar}>
             <Toolbar>
                 <Tooltip title={`${filterVerb} filters`} arrow>
                     <IconButton
