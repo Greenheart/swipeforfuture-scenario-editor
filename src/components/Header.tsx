@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     Grid,
     Typography,
@@ -10,14 +10,26 @@ import {
 } from '@material-ui/core'
 import { Tune, GetApp, OpenInBrowser, PlayArrow } from '@material-ui/icons'
 
+import { EditorContext } from '../contexts/EditorContext'
+
 const Header = () => {
     const theme = useTheme()
+    const editorContext = useContext(EditorContext)
+
+    const filterVerb = editorContext.state.isFiltersOpen ? 'Hide' : 'Show'
 
     return (
         <AppBar position="sticky">
             <Toolbar>
-                <Tooltip title="Change filters" arrow>
-                    <IconButton aria-label="Change filters" edge="start">
+                <Tooltip title={`${filterVerb} filters`} arrow>
+                    <IconButton
+                        aria-label={`${filterVerb} filters`}
+                        edge="start"
+                        onClick={() =>
+                            editorContext.setFiltersOpen(
+                                !editorContext.state.isFiltersOpen
+                            )
+                        }>
                         <Tune fontSize="large" />
                     </IconButton>
                 </Tooltip>
