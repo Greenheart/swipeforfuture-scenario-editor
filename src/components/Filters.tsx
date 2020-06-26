@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
-import { Drawer, Toolbar } from '@material-ui/core'
+import { Drawer, Toolbar, Divider, Theme } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 
 import { EditorContext } from '../contexts/EditorContext'
+import StatSlider from './StatSlider'
 
 const drawerWidth = '20rem'
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         drawer: {
             width: drawerWidth,
@@ -17,6 +18,8 @@ const useStyles = makeStyles(() =>
         },
         drawerContainer: {
             overflow: 'auto',
+            height: '100%',
+            padding: theme.spacing(2),
         },
     })
 )
@@ -31,13 +34,11 @@ const FiltersCore = ({ isOpen }: { isOpen: boolean }) => {
             open={isOpen}
             className={classes.drawer}
             classes={{ paper: classes.drawerPaper }}>
+            <Toolbar />
+
             <div className={classes.drawerContainer}>
-                <Toolbar />
-                <p>secret filters very secret indeed</p>
-                <p>
-                    secret filters very secret indeed long text super secret
-                    super super super secret
-                </p>
+                <Divider />
+                <StatSlider />
             </div>
         </Drawer>
     )
