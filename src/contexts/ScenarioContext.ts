@@ -1,9 +1,60 @@
 import { createContext } from 'react'
 
-export type ScenarioState = {}
+import { WorldQuery, GameWorld } from '../scenario/ContentTypes'
 
-export const ScenarioContext = createContext<{
+export interface Filter {
+    name: string
+    filter: WorldQuery
+}
+
+export interface ScenarioState {
+    id: string
+    name: string
+    description: string
+    splashImage: string
+    gameWorld: GameWorld
+    savedFilters: Filter[]
+}
+
+export interface ScenarioController {
     state: ScenarioState
-}>({
-    state: {},
+    setScenarioName(name: string): void
+}
+
+export const defaultScenario: ScenarioState = {
+    id: '',
+    name: '',
+    description: '',
+    splashImage: '',
+    gameWorld: {
+        stats: [],
+        events: [],
+        eventCards: {},
+        cards: [],
+        defaultState: {
+            state: {},
+            flags: {},
+        },
+    },
+    savedFilters: [],
+}
+
+export const ScenarioContext = createContext<ScenarioController>({
+    state: defaultScenario,
+    setScenarioName() {},
 })
+
+export function buildScenarioController(
+    state: ScenarioState,
+    setState: (s: ScenarioState) => void
+): ScenarioController {
+    return {
+        state,
+        setScenarioName: (name: string) => {
+            setState({
+                ...state,
+                name,
+            })
+        },
+    }
+}

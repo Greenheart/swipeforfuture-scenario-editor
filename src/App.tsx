@@ -1,4 +1,5 @@
 import React from 'react'
+
 import ScenarioEditor from './components/ScenarioEditor'
 
 function App() {
