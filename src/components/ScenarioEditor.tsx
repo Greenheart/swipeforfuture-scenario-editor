@@ -22,10 +22,18 @@ const ScenarioEditor = () => {
         setEditorState({ isFiltersOpen: isOpen })
     }
 
-    const [state, setScenarioState] = useState<ScenarioState | null>(null)
+    const [state, setScenarioState] = useState<{
+        scenario: ScenarioState
+    } | null>(null)
+    const scenario = state && state.scenario
     const scenarioController = useMemo<ScenarioController | null>(
-        () => (state ? buildScenarioController(state, setScenarioState) : null),
-        [state, setScenarioState]
+        () =>
+            scenario
+                ? buildScenarioController(scenario, () => {
+                      setScenarioState({ scenario })
+                  })
+                : null,
+        [scenario, setScenarioState]
     )
 
     useEffect(() => {
@@ -33,10 +41,12 @@ const ScenarioEditor = () => {
             const scenarioData: string | null = window.localStorage.getItem(
                 'scenario'
             )
-            const scenario: ScenarioState = scenarioData
+            const loadedScenario: ScenarioState = scenarioData
                 ? JSON.parse(scenarioData)
                 : defaultScenario
-            setScenarioState(scenario)
+            setScenarioState({ scenario: loadedScenario })
+        } else {
+            window.localStorage.setItem('scenario', JSON.stringify(state))
         }
     }, [state])
 

@@ -46,15 +46,13 @@ export const ScenarioContext = createContext<ScenarioController>({
 
 export function buildScenarioController(
     state: ScenarioState,
-    setState: (s: ScenarioState) => void
+    onUpdate: () => void
 ): ScenarioController {
     return {
         state,
         setScenarioName: (name: string) => {
-            setState({
-                ...state,
-                name,
-            })
+            state.name = name
+            onUpdate()
         },
     }
 }
